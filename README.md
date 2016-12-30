@@ -1,4 +1,4 @@
-== README
+## README ##
 
 `rails new long-pages`
 
@@ -8,10 +8,13 @@ edit `Gemfile`
 
 `rails generate kaminari:config`
 
-edit `config/initializers/kaminari_config.rb`, set the default_per_page to smaller number like 3 or 7
+edit `config/initializers/kaminari_config.rb`
+
+... un-comment and set the `default_per_page` to smaller number like 3 or 7
 
 
 `rails generate scaffold LongPage`
+
 edit `db/migrations/name-of-migration.rb`
 
 ```ruby
@@ -34,6 +37,7 @@ visit - http://www.generatedata.com/ - make 100 records
 - title (city)
 - body (text)
 - number (guid)
+
 save as gendata.csv
 
 
