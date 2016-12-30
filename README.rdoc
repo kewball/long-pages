@@ -1,0 +1,54 @@
+== README
+
+vim Gemfile
+gem 'kaminari'
+
+
+rails generate kaminari:config
+vim `config/initializers/kaminari_config.rb`, set the default_per_page to smaller number like 3 or 7
+
+
+rails generate scaffold LongPage
+vim db/migrations/name-of-migration.rb
+class CreateLongPages < ActiveRecord::Migration                                                                           
+  def change                                                                                                              
+    create_table :long_pages do |t|                                                                                       
+      t.string :title                                                                                                     
+      t.text :body                                                                                                        
+      t.string :number                                                                                                  
+      t.timestamps null: false                                                                                            
+    end                                                                                                                   
+  end                                                                                                                     
+end  
+rake db:migrate
+
+
+http://www.generatedata.com/ - make 100 records
+- id (number auto)
+- title (city)
+- body (text)
+- number (guid)
+save as gendata.csv
+
+
+cd db
+sqlite3 development.sqlite3
+.mode csv
+.import ../gendata.csv long_pages
+
+
+vim controllers/long_pages_controller.rb
+def index
+  @long_pages = LongPage.all.page params[:page]
+end
+...
+
+
+vim views/long_pages/index.html.erb
+<%= paginate @long_pages %>
+
+
+rails s
+
+
+

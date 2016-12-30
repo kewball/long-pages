@@ -1,0 +1,1 @@
+json.array! @long_pages, partial: 'long_pages/long_page', as: :long_page

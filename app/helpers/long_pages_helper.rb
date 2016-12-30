@@ -1,0 +1,2 @@
+module LongPagesHelper
+end
